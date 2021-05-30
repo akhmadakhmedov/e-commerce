@@ -95,8 +95,9 @@
 		<div href="#" class="card card-product-grid">
 			<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
 			<figcaption class="info-wrap">
-				<a href="{{ product.get_url }}" class="title">{{product.product_name }}</a>
-				
+				<strong>
+					<a href="{{ product.get_url }}" class="title"> {{product.product_name }} </a>
+				</strong>
 				<div class="rating-wrap">
 					<ul class="rating-stars">
 						<li style="width:80%" class="stars-active"> 
@@ -108,7 +109,9 @@
 					</ul>
 					<span class="label-rating text-muted"> 34 отзывы</span>
 				</div>
-				<div class="price mt-1">$ {{ product.price }}</div> <!-- price-wrap.// -->
+				<div class="price mt-1">{{ product.price }} сом  </div>  <!-- price-wrap.// -->
+				<a href="{{ product.get_url }}" class="btn btn-block btn-primary">Быстрый просмотр </a>
+				
 			</figcaption>
 		</div>
 	</div> <!-- col.// -->
@@ -136,8 +139,9 @@
 		<div href="#" class="card card-product-grid">
 			<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
 			<figcaption class="info-wrap">
+			<strong>
 				<a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
-				
+			</strong>
 				<div class="rating-wrap">
 					<ul class="rating-stars">
 						<li style="width:80%" class="stars-active"> 
@@ -149,7 +153,8 @@
 					</ul>
 					<span class="label-rating text-muted"> 34 отзывы</span>
 				</div>
-				<div class="price mt-1">$ {{ product.price }}</div> <!-- price-wrap.// -->
+				<div class="price mt-1">{{ product.price }} сом</div> <!-- price-wrap.// -->
+				<a href="{{ product.get_url }}" class="btn btn-block btn-primary">Быстрый просмотр </a>
 			</figcaption>
 		</div>
 	</div> <!-- col.// -->
@@ -176,8 +181,22 @@
 		<div href="#" class="card card-product-grid">
 			<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
 			<figcaption class="info-wrap">
+			<strong>
 				<a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
-				<div class="price mt-1">$ {{product.price }}</div> <!-- price-wrap.// -->
+			</strong>
+				<div class="rating-wrap">
+					<ul class="rating-stars">
+						<li style="width:80%" class="stars-active"> 
+							<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+						</li>
+						<li>
+							<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 
+						</li>
+					</ul>
+					<span class="label-rating text-muted"> 34 отзывы</span>
+				</div>
+				<div class="price mt-1">{{product.price }} сом</div> <!-- price-wrap.// -->
+				<a href="{{ product.get_url }}" class="btn btn-block btn-primary">Быстрый просмотр </a>
 			</figcaption>
 		</div>
 	</div> <!-- col.// -->
