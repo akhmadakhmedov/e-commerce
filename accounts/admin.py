@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Account
+from .models import Account, forgotPassword
 
 class AccountAdmin(UserAdmin):
-    list_display = ('username', 'name', 'phone_number', 'last_login', 'date_joined')
-    list_display_links = ('username', 'name', 'phone_number')
+    list_display = ('name', 'phone_number', 'last_login', 'date_joined')
+    list_display_links = ('name', 'phone_number')
     readonly_fields = ('last_login', 'date_joined')
     ordering = ('-date_joined',)
     
@@ -13,3 +13,4 @@ class AccountAdmin(UserAdmin):
     fieldsets = ()
 
 admin.site.register(Account, AccountAdmin)
+admin.site.register(forgotPassword)

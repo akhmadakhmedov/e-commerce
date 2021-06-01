@@ -6,12 +6,11 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
 class MyAccounManager(BaseUserManager):
-    def create_user(self, username, name, phone_number, password = None):
+    def create_user(self, name, phone_number, password = None):
         if not phone_number:
             raise ValueError('ggy')
         
         user = self.model(
-            username = username,
             phone_number = phone_number,
             name = name,
             )
@@ -19,9 +18,8 @@ class MyAccounManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, phone_number, name, password):
+    def create_superuser(self, phone_number, name, password):
         user = self.create_user(
-            username = username,
             phone_number = phone_number,
             name = name,
             password = password,
@@ -36,9 +34,8 @@ class MyAccounManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser):
-    phone_number        = models.CharField(max_length=50, unique=True)
-    name                = models.CharField(max_length=50)
-    username            = models.CharField(max_length=50)
+    phone_number        = models.CharField(max_length=50, unique=True, verbose_name="Телефон номер")
+    name                = models.CharField(max_length=50, verbose_name="Имя")
 
     date_joined         = models.DateTimeField(auto_now_add=True)
     last_login          = models.DateTimeField(auto_now_add=True)
@@ -48,7 +45,7 @@ class Account(AbstractBaseUser):
     is_superadmin       = models.BooleanField(default=False)
 
     USERNAME_FIELD      = 'phone_number'
-    REQUIRED_FIELDS     = ['username', 'name']
+    REQUIRED_FIELDS     = ['name']
 
     objects = MyAccounManager()
 
@@ -60,3 +57,14 @@ class Account(AbstractBaseUser):
     
     def has_module_perms(self, add_label):
         return True
+
+
+class forgotPassword(models.Model):
+    name            = models.CharField(max_length=100, verbose_name="Имя")
+    phone_number    = models.CharField(max_length=50, verbose_name="Телефон номер")
+
+    def __str__(self):
+        return self.phone_number
+
+    
+    
