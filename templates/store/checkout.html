@@ -11,7 +11,7 @@
 <div class="card">
     <div class='card-body'>
         <h4 class='card-title mb-4'>Платежный адрес</h4>
-        <form action="" method="POST">{% csrf_token %}
+        <form action="{% url 'place_order' %}" method="POST">{% csrf_token %}
         <div class="form-row">
                 <div class='col form-group'>
                     <label for="">Имя</label>
@@ -32,6 +32,81 @@
                     <input type="email" name='email' class='form-control'>
                 </div>
             </div>
+
+
+
+            <div class="form-row">
+                <div class='col form-group'>
+                    <label for="">Способ оплаты</label>
+                    <select name="payment_method" class="form-control">
+                        <option value="" disabled selected>Выбирать</option>
+                        <option value="Elsom">Элсом</option>
+                        <option value="Nalichka">Оплата при получении</option>
+                    </select>               
+                </div>  
+            </div>
+
+
+
+
+
+            
+
+
+
+
+            <div class="form-row">
+                <div class='col form-group'>
+                    <label for="">Область</label>
+                    <select name="state" class="form-control" required>
+                        <option value="" disabled selected>Выбирать</option>
+                        <option value="Chui">Чуй</option>
+                        <option value="Osh">Ош</option>
+                        <option value="Batken">Баткен</option>
+                        <option value="Dzhalal-Abad">Джалал-Абад</option>
+                        <option value="Issik-Kul">Иссык-Куль</option>
+                        <option value="Naryn">Нарын</option>
+                        <option value="Talas">Талас</option>
+                    </select> 
+                </div>
+                <div class='col form-group'>
+                    <label for="">Город/Район</label>
+                    <select name="city" class="form-control" required>
+                        <option value="" disabled selected>Выбирать</option>
+                        <option value="Aleksandrovka">Александровка</option>
+                        <option value="Aravan">Араван</option>
+                        <option value="Balykchy">Балыкчы</option>
+                        <option value="Batken">Баткен</option>
+                        <option value="Bazar-Korgon">Базар Коргон</option>
+                        <option value="Belovodskiy">Беловодский</option>
+                        <option value="Bishkek">Бишкек</option>
+                        <option value="Dzhalal-Abad">Джалал-Абад</option>
+                        <option value="Isfana">Исфана</option>
+                        <option value="Kadamzhai">Кадамжай</option>
+                        <option value="Kant">Кант</option>
+                        <option value="Kara-Balta">Кара-Балта</option>
+                        <option value="Karakol">Каракол</option>
+                        <option value="Kara-Kul">Кара-Куль</option>
+                        <option value="Kara-Suu">Кара-Суу</option>
+                        <option value="Kochkor-Ata">Кочкор-Ата</option>
+                        <option value="Kyzyl-Kiya">Кызыл-Кия</option>
+                        <option value="Naryn">Нарын</option>
+                        <option value="Nookat">Ноокат</option>
+                        <option value="Nooken">Ноокен</option>
+                        <option value="Osh">Ош</option>
+                        <option value="Sulukta">Сулюкта</option>
+                        <option value="Talas">Талас</option>
+                        <option value="Tokmok">Токмок</option>
+                        <option value="Toktogul">Токтогул</option>
+                        <option value="Uzgen">Узген</option>
+                        <option value="Cholpon-Ata">Чолпон-Ата</option>
+                        <option value="Isfana">Исфана</option>
+                    </select> 
+                </div>
+            </div>
+
+
+
             <div class="form-row">
                 <div class='col form-group'>
                     <label for="">Адресная строка 1</label>
@@ -42,23 +117,15 @@
                     <input type="text" name='address_line_2' class='form-control'>
                 </div>
             </div>
-            <div class="form-row">
-                <div class='col form-group'>
-                    <label for="">Область</label>
-                    <input type='text' name='state' class='form-control' required>
-                </div>
-                <div class='col form-group'>
-                    <label for="">Город</label>
-                    <input type='text' name='city' class='form-control' required>
-                </div>
-            </div>
+
+
+
             
             <div class="form-row">
                 <div class='col form-group'>
                     <label for="">Примечание к заказу</label>
                     <textarea class="form-control" name="order_note" rows="2"></textarea>
-                </div>
-        
+                </div>  
             </div>
     </div>
 
@@ -128,8 +195,8 @@
             </tr>
             {% endfor %}
 
-        </tbody>
-        </table>
+                </tbody>
+                </table>
             <button type='submit' name='submit' class='btn btn-primary btn-block'>Разместить заказ</button>
             <a href="{% url 'store' %}" class='btn btn-light btn-block'> Продолжить покупки </a>
             </form>	
